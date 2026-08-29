@@ -46,11 +46,10 @@ def end(game_state: typing.Dict):
 def move(game_state: typing.Dict) -> typing.Dict:
 
 
-    '''data = game_state.get_json()
-    with open(f"turn_{data['turn']}.json", "w") as f:
-        json.dump(data, f, indent=2)
-    print(json.dumps(game_state, indent=2))'''
-    print("STATE_DUMP", json.dumps(game_state))
+    data = game_state.get_json()
+    '''with open(f"turn_{data['turn']}.json", "w") as f:
+        json.dump(data, f, indent=2)'''
+    print(json.dumps(data, indent=2))
 
 
 
@@ -60,7 +59,21 @@ def move(game_state: typing.Dict) -> typing.Dict:
     # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
     my_neck = game_state["you"]["body"][1]  # Coordinates of your "neck"
-
+    my_x_body = [item["x"] for item in game_state["you"]["body"][1:]]
+    my_y_body = [item["y"] for item in game_state["you"]["bidy"][1:]]
+    
+    if my_head["x"] - 1 in my_x_body:
+        is_move_safe["left"] = False
+    if my_head["x"] + 1 in my_x_body:
+        is_move_safe["right"] = False
+    if my_head["y"] - 1 in my_y_body:
+        is_move_safe["down"] = False
+    if my_head["y"] + 1 in my_y_body:
+        is_move_safe["up"] = False
+    
+    
+    
+    
     if my_neck["x"] < my_head["x"]:  # Neck is left of head, don't move left
         is_move_safe["left"] = False
 
