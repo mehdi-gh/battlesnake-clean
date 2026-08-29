@@ -59,7 +59,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     # We've included code to prevent your Battlesnake from moving backwards
     my_head = game_state["you"]["body"][0]  # Coordinates of your head
     my_neck = game_state["you"]["body"][1]  # Coordinates of your "neck"
-    my_x_y_body = [item.values() for item in game_state["you"]["body"][1:]]
+    my_x_y_body = [tuple(item.values()) for item in game_state["you"]["body"][1:]]
     #my_y_body = [item["y"] for item in game_state["you"]["bidy"][1:]]
     
     if (my_head["x"] - 1, my_head["y"]) in my_x_y_body:
