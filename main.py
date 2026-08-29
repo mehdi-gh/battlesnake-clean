@@ -69,7 +69,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
         is_move_safe["right"] = False
     if my_head["y"] == 0:
         is_move_safe["down"] = False
-    if my_head["y"] == game_state["board"]["heigth"] - 1:
+    if my_head["y"] == game_state["board"]["height"] - 1:
         is_move_safe["up"] = False
               
         
