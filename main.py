@@ -48,8 +48,9 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     '''data = game_state.get_json()
     with open(f"turn_{data['turn']}.json", "w") as f:
-        json.dump(data, f, indent=2)'''
-    print(json.dumps(game_state, indent=2))
+        json.dump(data, f, indent=2)
+    print(json.dumps(game_state, indent=2))'''
+    print("STATE_DUMP", json.dumps(game_state))
 
 
 
